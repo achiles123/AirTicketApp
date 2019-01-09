@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirTicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="AirLine">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="255" />
+    <Property Name="status" Type="tinyint" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'AirTicket.dbo.Calendar' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Calendar">
+          <Property Name="id" Type="bigint" />
+          <Property Name="month" Type="smallint" />
+          <Property Name="day" Type="smallint" />
+          <Property Name="status" Type="tinyint" />
+        </EntityType>-->
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'AirTicket.dbo.Price' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Price">
+          <Property Name="id" Type="bigint" />
+          <Property Name="calendar_id" Type="bigint" />
+          <Property Name="airline_id" Type="int" />
+          <Property Name="price" Type="int" />
+          <Property Name="status" Type="tinyint" />
+        </EntityType>-->
+  <EntityContainer Name="AirTicketModelStoreContainer">
+    <EntitySet Name="AirLine" EntityType="Self.AirLine" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

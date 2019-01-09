@@ -1,0 +1,13 @@
+D:\AirTicket\AirTicket\bin\Debug\AirTicket.exe.config
+D:\AirTicket\AirTicket\bin\Debug\AirTicket.exe
+D:\AirTicket\AirTicket\bin\Debug\AirTicket.pdb
+D:\AirTicket\AirTicket\bin\Debug\EntityFramework.dll
+D:\AirTicket\AirTicket\bin\Debug\EntityFramework.SqlServer.dll
+D:\AirTicket\AirTicket\bin\Debug\EntityFramework.xml
+D:\AirTicket\AirTicket\bin\Debug\EntityFramework.SqlServer.xml
+D:\AirTicket\AirTicket\obj\Debug\AirTicket.csprojResolveAssemblyReference.cache
+D:\AirTicket\AirTicket\obj\Debug\AirTicket.Form1.resources
+D:\AirTicket\AirTicket\obj\Debug\AirTicket.Properties.Resources.resources
+D:\AirTicket\AirTicket\obj\Debug\AirTicket.csproj.GenerateResource.Cache
+D:\AirTicket\AirTicket\obj\Debug\AirTicket.exe
+D:\AirTicket\AirTicket\obj\Debug\AirTicket.pdb
