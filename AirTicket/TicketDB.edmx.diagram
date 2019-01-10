@@ -5,9 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6a72c03c256e4d9c8d6425b04a1d81aa" Name="Diagram1">
-        <EntityTypeShape EntityType="AirTicketModel.AirLine" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AirTicketModel.Calendar" Width="1.5" PointX="3.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AirTicketModel.Price" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AirTicketModel.AirLine" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AirTicketModel.Calendar" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AirTicketModel.Country" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AirTicketModel.From" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AirTicketModel.Price" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="AirTicketModel.To" Width="1.5" PointX="5.375" PointY="3.75" />
+        <AssociationConnector Association="AirTicketModel.FromTo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
