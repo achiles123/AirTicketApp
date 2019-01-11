@@ -102,6 +102,13 @@
     <Compile Include="To.cs">
       <DependentUpon>TicketDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="VietJet\Airport.cs" />
+    <Compile Include="VietJet\AirportList.cs" />
+    <Compile Include="VietJet\ArrivalAirports.cs" />
+    <Compile Include="VietJet\DepartureAirport.cs" />
+    <Compile Include="VietJet\Pair.cs" />
+    <Compile Include="VietJet\VietJetAirport.cs" />
+    <Compile Include="VietJet\VietJetProcess.cs" />
     <Compile Include="VNAir\Airports.cs" />
     <Compile Include="VNAir\AirportsData.cs" />
     <Compile Include="VNAir\Destination.cs" />
@@ -156,6 +163,7 @@
       <LastGenOutput>TicketDB.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

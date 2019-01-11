@@ -26,3 +26,4 @@ D:\AirtTicketApp\AirTicket\bin\Debug\Newtonsoft.Json.xml
 D:\AirtTicketApp\AirTicket\obj\Debug\AirTicket.Form1.resources
 D:\AirtTicketApp\AirTicket\obj\Debug\AirTicket.Properties.Resources.resources
 D:\AirtTicketApp\AirTicket\obj\Debug\AirTicket.csproj.GenerateResource.Cache
+D:\AirtTicketApp\AirTicket\obj\Debug\AirTicket.csprojResolveAssemblyReference.cache
