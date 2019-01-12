@@ -4,9 +4,9 @@
     <EntitySetMapping Name="AirLines">
       <EntityTypeMapping TypeName="AirTicketModel.AirLine">
         <MappingFragment StoreEntitySet="AirLine">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
           <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -16,17 +16,6 @@
           <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="day" ColumnName="day" />
           <ScalarProperty Name="month" ColumnName="month" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Prices">
-      <EntityTypeMapping TypeName="AirTicketModel.Price">
-        <MappingFragment StoreEntitySet="Price">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="price1" ColumnName="price" />
-          <ScalarProperty Name="airline_id" ColumnName="airline_id" />
-          <ScalarProperty Name="calendar_id" ColumnName="calendar_id" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -52,6 +41,17 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Prices">
+      <EntityTypeMapping TypeName="AirTicketModel.Price">
+        <MappingFragment StoreEntitySet="Price">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="price1" ColumnName="price" />
+          <ScalarProperty Name="airline_id" ColumnName="airline_id" />
+          <ScalarProperty Name="calendar_id" ColumnName="calendar_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
     <EntitySetMapping Name="Toes">
       <EntityTypeMapping TypeName="AirTicketModel.To">
         <MappingFragment StoreEntitySet="To">
@@ -65,14 +65,5 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="FromTo" TypeName="AirTicketModel.FromTo" StoreEntitySet="To">
-      <EndProperty Name="To">
-        <ScalarProperty Name="id" ColumnName="from_id" />
-        <ScalarProperty Name="from_id" ColumnName="from_id" />
-      </EndProperty>
-      <EndProperty Name="From">
-        <ScalarProperty Name="id" ColumnName="id" />
-      </EndProperty>
-    </AssociationSetMapping>
   </EntityContainerMapping>
 </Mapping>
