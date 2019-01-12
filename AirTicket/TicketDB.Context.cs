@@ -28,5 +28,8 @@ namespace AirTicket
         public virtual DbSet<AirLine> AirLines { get; set; }
         public virtual DbSet<Calendar> Calendars { get; set; }
         public virtual DbSet<Price> Prices { get; set; }
+        public virtual DbSet<Country> Countries { get; set; }
+        public virtual DbSet<From> Froms { get; set; }
+        public virtual DbSet<To> Toes { get; set; }
     }
 }

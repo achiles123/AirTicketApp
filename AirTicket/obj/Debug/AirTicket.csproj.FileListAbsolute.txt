@@ -11,3 +11,16 @@ D:\AirTicket\AirTicket\obj\Debug\AirTicket.Properties.Resources.resources
 D:\AirTicket\AirTicket\obj\Debug\AirTicket.csproj.GenerateResource.Cache
 D:\AirTicket\AirTicket\obj\Debug\AirTicket.exe
 D:\AirTicket\AirTicket\obj\Debug\AirTicket.pdb
+D:\project\AirtTicketApp\AirTicket\bin\Debug\AirTicket.exe.config
+D:\project\AirtTicketApp\AirTicket\obj\Debug\AirTicket.exe
+D:\project\AirtTicketApp\AirTicket\obj\Debug\AirTicket.pdb
+D:\project\AirtTicketApp\AirTicket\bin\Debug\AirTicket.exe
+D:\project\AirtTicketApp\AirTicket\bin\Debug\AirTicket.pdb
+D:\project\AirtTicketApp\AirTicket\bin\Debug\EntityFramework.dll
+D:\project\AirtTicketApp\AirTicket\bin\Debug\EntityFramework.SqlServer.dll
+D:\project\AirtTicketApp\AirTicket\bin\Debug\EntityFramework.xml
+D:\project\AirtTicketApp\AirTicket\bin\Debug\EntityFramework.SqlServer.xml
+D:\project\AirtTicketApp\AirTicket\obj\Debug\AirTicket.csprojResolveAssemblyReference.cache
+D:\project\AirtTicketApp\AirTicket\obj\Debug\AirTicket.Form1.resources
+D:\project\AirtTicketApp\AirTicket\obj\Debug\AirTicket.Properties.Resources.resources
+D:\project\AirtTicketApp\AirTicket\obj\Debug\AirTicket.csproj.GenerateResource.Cache

@@ -8,6 +8,10 @@
         <EntityTypeShape EntityType="AirTicketModel.AirLine" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="AirTicketModel.Calendar" Width="1.5" PointX="3.75" PointY="0.75" />
         <EntityTypeShape EntityType="AirTicketModel.Price" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AirTicketModel.Country" Width="1.5" PointX="8.875" PointY="0.5" />
+        <EntityTypeShape EntityType="AirTicketModel.From" Width="1.5" PointX="3.625" PointY="3.125" />
+        <EntityTypeShape EntityType="AirTicketModel.To" Width="1.5" PointX="5.875" PointY="3.5" />
+        <AssociationConnector Association="AirTicketModel.FromTo" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

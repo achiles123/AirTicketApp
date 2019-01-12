@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirTicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AirLine">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="status" Type="Byte" />
+  </EntityType>
+  <EntityContainer Name="AirTicketEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AirLines" EntityType="Self.AirLine" />
+    <EntitySet Name="Calendars" EntityType="AirTicketModel.Calendar" />
+    <EntitySet Name="Prices" EntityType="AirTicketModel.Price" />
+    <EntitySet Name="Countries" EntityType="AirTicketModel.Country" />
+    <EntitySet Name="Froms" EntityType="AirTicketModel.From" />
+    <EntitySet Name="Toes" EntityType="AirTicketModel.To" />
+    <AssociationSet Name="FromTo" Association="AirTicketModel.FromTo">
+      <End Role="From" EntitySet="Froms" />
+      <End Role="To" EntitySet="Toes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="month" Type="Int16" />
+    <Property Name="day" Type="Int16" />
+    <Property Name="status" Type="Byte" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" />
+    <Property Name="calendar_id" Type="Int64" />
+    <Property Name="airline_id" Type="Int32" />
+    <Property Name="price1" Type="Int32" />
+    <Property Name="status" Type="Byte" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+  </EntityType>
+  <EntityType Name="From">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="country_code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="country_id" Type="Int32" />
+    <NavigationProperty Name="Toes" Relationship="AirTicketModel.FromTo" FromRole="From" ToRole="To" />
+  </EntityType>
+  <EntityType Name="To">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="from_id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="country" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="country_code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="country_id" Type="Int32" />
+    <NavigationProperty Name="From" Relationship="AirTicketModel.FromTo" FromRole="To" ToRole="From" />
+  </EntityType>
+  <Association Name="FromTo">
+    <End Type="AirTicketModel.From" Role="From" Multiplicity="1" />
+    <End Type="AirTicketModel.To" Role="To" Multiplicity="*" />
+  </Association>
+</Schema>
