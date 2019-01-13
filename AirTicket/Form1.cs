@@ -21,22 +21,16 @@ namespace AirTicket
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Thread VNAirThread = new Thread(new ThreadStart(ProcessVNAirline));
+            Thread VNAirThread = new Thread(new ThreadStart(VNAirProcess.process));
             VNAirThread.IsBackground = true;
             VNAirThread.Start();
-
-            Thread VietJetThread = new Thread(new ThreadStart(ProcessVietJet));
-            VietJetThread.IsBackground = true;
-            VietJetThread.Start();
-        }
-        void ProcessVNAirline()
-        {
-            VNAirProcess.process();
         }
 
-        void ProcessVietJet()
+        private void btnVietJet_Click(object sender, EventArgs e)
         {
-            VietJetProcess.process();
+            Thread JetStarThread = new Thread(new ThreadStart(VietJetProcess.process));
+            JetStarThread.IsBackground = true;
+            JetStarThread.Start();
         }
     }
 }
