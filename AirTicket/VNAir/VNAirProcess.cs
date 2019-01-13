@@ -81,15 +81,24 @@ namespace AirTicket
                 {
                     foreach (Airports airFrom in value.Airports)
                     {
-                        From from = db.Froms.Where(x => x.code == airFrom.Code && x.country_code==airFrom.countryName).FirstOrDefault();
+                        Airport airPortFrom = db.Airports.Where(x => x.code == airFrom.Code && x.country_code == airFrom.countryName).FirstOrDefault();
+                        if (airPortFrom == null)
+                        {
+                            airPortFrom = new Airport();
+                            airPortFrom.code = airFrom.Code;
+                            airPortFrom.name = airFrom.DisplayName;
+                            airPortFrom.country_code = country.code;
+                            airPortFrom.country = country.code;
+                            airPortFrom.country_id = country.id;
+                            db.Airports.Add(airPortFrom);
+                            db.SaveChanges();
+                        }
+                        From from = db.Froms.Where(x => x.airport_id == airPortFrom.id && x.airline_id==1).FirstOrDefault();
                         if(from == null)
                         {
                             from = new From();
-                            from.code = airFrom.Code;
-                            from.name = airFrom.DisplayName;
-                            from.country_code = country.code;
-                            from.country = country.code;
-                            from.country_id = country.id;
+                            from.airline_id = 1;
+                            from.airport_id = airPortFrom.id;
                             db.Froms.Add(from);
                             db.SaveChanges();
                         }
@@ -101,17 +110,26 @@ namespace AirTicket
                                 {
                                     foreach(Airports airTo in destination.Airports)
                                     {
-                                        To to = db.Toes.Where(x => x.code == airTo.Code && x.country_code == airTo.countryName && x.From.country_code == airFrom.countryName).FirstOrDefault();
-                                        if (to == null)
+                                        Airport airPortTo = db.Airports.Where(x => x.code == airTo.Code && x.country_code == airTo.countryName).FirstOrDefault();
+                                        if (airPortTo == null)
                                         {
                                             Country countryTo = db.Countries.Where(x => x.code == destination.DisplayName).FirstOrDefault();
+                                            airPortTo = new Airport();
+                                            airPortTo.name = airTo.DisplayName;
+                                            airPortTo.code = airTo.Code;
+                                            airPortTo.country = destination.DisplayName;
+                                            airPortTo.country_code = destination.DisplayName;
+                                            airPortTo.country_id = countryTo.id;
+                                            db.Airports.Add(airPortTo);
+                                            db.SaveChanges();
+                                        }
+                                        To to = db.Toes.Where(x => x.airport_id == airPortTo.id && x.airline_id == 1 && x.from_id == from.id).FirstOrDefault();
+                                        if (to == null)
+                                        {
                                             to = new To();
+                                            to.airline_id = 1;
                                             to.from_id = from.id;
-                                            to.name = airTo.DisplayName;
-                                            to.code = airTo.Code;
-                                            to.country = destination.DisplayName;
-                                            to.country_code = destination.DisplayName;
-                                            to.country_id = countryTo.id;
+                                            to.airport_id = airPortFrom.id;
                                             db.Toes.Add(to);
                                             db.SaveChanges();
                                         }

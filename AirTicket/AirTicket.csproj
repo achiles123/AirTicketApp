@@ -61,7 +61,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirLine.cs">
+    <Compile Include="Airline.cs">
+      <DependentUpon>TicketDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Airport.cs">
       <DependentUpon>TicketDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Calendar.cs">
@@ -79,6 +82,7 @@
     <Compile Include="From.cs">
       <DependentUpon>TicketDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Helper.cs" />
     <Compile Include="Price.cs">
       <DependentUpon>TicketDB.tt</DependentUpon>
     </Compile>

@@ -5,13 +5,13 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="6a72c03c256e4d9c8d6425b04a1d81aa" Name="Diagram1">
-        <EntityTypeShape EntityType="AirTicketModel.AirLine" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AirTicketModel.Calendar" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AirTicketModel.Country" Width="1.5" PointX="0.75" PointY="3.75" />
-        <EntityTypeShape EntityType="AirTicketModel.From" Width="1.5" PointX="2.75" PointY="3.75" />
-        <EntityTypeShape EntityType="AirTicketModel.Price" Width="1.5" PointX="4.75" PointY="0.75" />
-        <EntityTypeShape EntityType="AirTicketModel.To" Width="1.5" PointX="5.375" PointY="3.75" />
-        <AssociationConnector Association="AirTicketModel.FromTo" />
+        <EntityTypeShape EntityType="AirTicketModel.Airline" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="AirTicketModel.Airport" Width="1.5" PointX="2.5" PointY="0.5" />
+        <EntityTypeShape EntityType="AirTicketModel.Calendar" Width="1.5" PointX="4.5" PointY="0.5" />
+        <EntityTypeShape EntityType="AirTicketModel.Country" Width="1.5" PointX="0.875" PointY="2.625" />
+        <EntityTypeShape EntityType="AirTicketModel.Price" Width="1.5" PointX="4.125" PointY="2.625" />
+        <EntityTypeShape EntityType="AirTicketModel.From" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AirTicketModel.To" Width="1.5" PointX="2.75" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

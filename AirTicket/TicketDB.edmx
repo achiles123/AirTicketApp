@@ -5,12 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="AirTicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="AirLine">
+        <EntityType Name="Airline">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="255" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Airport">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+          <Property Name="code" Type="nvarchar" MaxLength="255" />
+          <Property Name="country" Type="nvarchar" MaxLength="255" />
+          <Property Name="country_code" Type="nvarchar" MaxLength="255" />
+          <Property Name="country_id" Type="int" />
           <Property Name="status" Type="tinyint" />
         </EntityType>
         <EntityType Name="Calendar">
@@ -35,11 +46,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="255" />
-          <Property Name="code" Type="nchar" MaxLength="255" />
-          <Property Name="country" Type="nchar" MaxLength="255" />
-          <Property Name="country_code" Type="nchar" MaxLength="255" />
-          <Property Name="country_id" Type="int" />
+          <Property Name="airport_id" Type="int" />
+          <Property Name="airline_id" Type="int" />
         </EntityType>
         <EntityType Name="Price">
           <Key>
@@ -57,14 +65,12 @@
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="from_id" Type="int" Nullable="false" />
-          <Property Name="name" Type="nchar" MaxLength="255" />
-          <Property Name="code" Type="nchar" MaxLength="255" />
-          <Property Name="country" Type="nchar" MaxLength="255" />
-          <Property Name="country_code" Type="nchar" MaxLength="255" />
-          <Property Name="country_id" Type="int" />
+          <Property Name="airport_id" Type="int" />
+          <Property Name="airline_id" Type="int" />
         </EntityType>
         <EntityContainer Name="AirTicketModelStoreContainer">
-          <EntitySet Name="AirLine" EntityType="Self.AirLine" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Airline" EntityType="Self.Airline" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Airport" EntityType="Self.Airport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="From" EntityType="Self.From" Schema="dbo" store:Type="Tables" />
@@ -76,23 +82,31 @@
     <edmx:ConceptualModels>
       <Schema Namespace="AirTicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityContainer Name="AirTicketEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AirLines" EntityType="AirTicketModel.AirLine" />
+          <EntitySet Name="Airlines" EntityType="AirTicketModel.Airline" />
+          <EntitySet Name="Airports" EntityType="AirTicketModel.Airport" />
           <EntitySet Name="Calendars" EntityType="AirTicketModel.Calendar" />
           <EntitySet Name="Countries" EntityType="AirTicketModel.Country" />
-          <EntitySet Name="Froms" EntityType="AirTicketModel.From" />
           <EntitySet Name="Prices" EntityType="AirTicketModel.Price" />
+          <EntitySet Name="Froms" EntityType="AirTicketModel.From" />
           <EntitySet Name="Toes" EntityType="AirTicketModel.To" />
-          <AssociationSet Name="FromTo" Association="AirTicketModel.FromTo">
-            <End Role="From" EntitySet="Froms" />
-            <End Role="To" EntitySet="Toes" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="AirLine">
+        <EntityType Name="Airline">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Airport">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="country_id" Type="Int32" />
           <Property Name="status" Type="Byte" />
         </EntityType>
         <EntityType Name="Calendar">
@@ -112,18 +126,6 @@
           <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
           <Property Name="code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
         </EntityType>
-        <EntityType Name="From">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" annotation:StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="country" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="country_code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="country_id" Type="Int32" />
-          <NavigationProperty Name="Toes" Relationship="AirTicketModel.FromTo" FromRole="From" ToRole="To" />
-        </EntityType>
         <EntityType Name="Price">
           <Key>
             <PropertyRef Name="id" />
@@ -134,41 +136,45 @@
           <Property Name="price1" Type="Int32" />
           <Property Name="status" Type="Byte" />
         </EntityType>
+        <EntityType Name="From">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="airport_id" Type="Int32" />
+          <Property Name="airline_id" Type="Int32" />
+        </EntityType>
         <EntityType Name="To">
           <Key>
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="from_id" Type="Int32" Nullable="false" />
-          <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="country" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="country_code" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
-          <Property Name="country_id" Type="Int32" />
-          <NavigationProperty Name="From" Relationship="AirTicketModel.FromTo" FromRole="To" ToRole="From" />
+          <Property Name="airport_id" Type="Int32" />
+          <Property Name="airline_id" Type="Int32" />
         </EntityType>
-        <Association Name="FromTo">
-          <End Type="AirTicketModel.From" Role="From" Multiplicity="1" />
-          <End Type="AirTicketModel.To" Role="To" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="From">
-              <PropertyRef Name="id" />
-            </Principal>
-            <Dependent Role="To">
-              <PropertyRef Name="from_id" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="AirTicketModelStoreContainer" CdmEntityContainer="AirTicketEntities">
-          <EntitySetMapping Name="AirLines">
-            <EntityTypeMapping TypeName="AirTicketModel.AirLine">
-              <MappingFragment StoreEntitySet="AirLine">
+          <EntitySetMapping Name="Airlines">
+            <EntityTypeMapping TypeName="AirTicketModel.Airline">
+              <MappingFragment StoreEntitySet="Airline">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Airports">
+            <EntityTypeMapping TypeName="AirTicketModel.Airport">
+              <MappingFragment StoreEntitySet="Airport">
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="country_id" ColumnName="country_id" />
+                <ScalarProperty Name="country_code" ColumnName="country_code" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
@@ -193,18 +199,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Froms">
-            <EntityTypeMapping TypeName="AirTicketModel.From">
-              <MappingFragment StoreEntitySet="From">
-                <ScalarProperty Name="country_id" ColumnName="country_id" />
-                <ScalarProperty Name="country_code" ColumnName="country_code" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="Prices">
             <EntityTypeMapping TypeName="AirTicketModel.Price">
               <MappingFragment StoreEntitySet="Price">
@@ -216,14 +210,20 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="Froms">
+            <EntityTypeMapping TypeName="AirTicketModel.From">
+              <MappingFragment StoreEntitySet="From">
+                <ScalarProperty Name="airline_id" ColumnName="airline_id" />
+                <ScalarProperty Name="airport_id" ColumnName="airport_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Toes">
             <EntityTypeMapping TypeName="AirTicketModel.To">
               <MappingFragment StoreEntitySet="To">
-                <ScalarProperty Name="country_id" ColumnName="country_id" />
-                <ScalarProperty Name="country_code" ColumnName="country_code" />
-                <ScalarProperty Name="country" ColumnName="country" />
-                <ScalarProperty Name="code" ColumnName="code" />
-                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="airline_id" ColumnName="airline_id" />
+                <ScalarProperty Name="airport_id" ColumnName="airport_id" />
                 <ScalarProperty Name="from_id" ColumnName="from_id" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>

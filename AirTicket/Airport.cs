@@ -12,10 +12,14 @@ namespace AirTicket
     using System;
     using System.Collections.Generic;
     
-    public partial class From
+    public partial class Airport
     {
         public int id { get; set; }
-        public Nullable<int> airport_id { get; set; }
-        public Nullable<int> airline_id { get; set; }
+        public string name { get; set; }
+        public string code { get; set; }
+        public string country { get; set; }
+        public string country_code { get; set; }
+        public Nullable<int> country_id { get; set; }
+        public Nullable<byte> status { get; set; }
     }
 }

@@ -61,9 +61,10 @@ namespace AirTicket.VietJet
             if (data == null)
                 return;
             AirTicketEntities db = new AirTicketEntities();
-            foreach(Pair pair in data.Pair)
+            foreach (Pair value in data.Pair)
             {
-                pair.DepartureAirport.
+                
+                
             }
         }
     }
