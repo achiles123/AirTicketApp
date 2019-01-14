@@ -15,7 +15,7 @@ namespace AirTicket
     public partial class To
     {
         public int id { get; set; }
-        public int from_id { get; set; }
+        public Nullable<int> from_id { get; set; }
         public Nullable<int> airport_id { get; set; }
         public Nullable<int> airline_id { get; set; }
     }

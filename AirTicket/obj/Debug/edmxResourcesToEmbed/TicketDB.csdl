@@ -3,11 +3,11 @@
   <EntityContainer Name="AirTicketEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Airlines" EntityType="AirTicketModel.Airline" />
     <EntitySet Name="Airports" EntityType="AirTicketModel.Airport" />
-    <EntitySet Name="Calendars" EntityType="AirTicketModel.Calendar" />
     <EntitySet Name="Countries" EntityType="AirTicketModel.Country" />
     <EntitySet Name="Prices" EntityType="AirTicketModel.Price" />
     <EntitySet Name="Froms" EntityType="AirTicketModel.From" />
     <EntitySet Name="Toes" EntityType="AirTicketModel.To" />
+    <EntitySet Name="Calendars" EntityType="AirTicketModel.Calendar" />
   </EntityContainer>
   <EntityType Name="Airline">
     <Key>
@@ -26,15 +26,6 @@
     <Property Name="country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="country_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
     <Property Name="country_id" Type="Int32" />
-    <Property Name="status" Type="Byte" />
-  </EntityType>
-  <EntityType Name="Calendar">
-    <Key>
-      <PropertyRef Name="id" />
-    </Key>
-    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="month" Type="Int16" />
-    <Property Name="day" Type="Int16" />
     <Property Name="status" Type="Byte" />
   </EntityType>
   <EntityType Name="Country">
@@ -68,8 +59,16 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="from_id" Type="Int32" Nullable="false" />
+    <Property Name="from_id" Type="Int32" />
     <Property Name="airport_id" Type="Int32" />
     <Property Name="airline_id" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="status" Type="Byte" />
+    <Property Name="date" Type="DateTime" Precision="0" />
   </EntityType>
 </Schema>

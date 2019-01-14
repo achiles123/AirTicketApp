@@ -29,9 +29,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="month" Type="smallint" />
-          <Property Name="day" Type="smallint" />
           <Property Name="status" Type="tinyint" />
+          <Property Name="date" Type="date" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -64,7 +63,7 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="from_id" Type="int" Nullable="false" />
+          <Property Name="from_id" Type="int" />
           <Property Name="airport_id" Type="int" />
           <Property Name="airline_id" Type="int" />
         </EntityType>
@@ -84,11 +83,11 @@
         <EntityContainer Name="AirTicketEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Airlines" EntityType="AirTicketModel.Airline" />
           <EntitySet Name="Airports" EntityType="AirTicketModel.Airport" />
-          <EntitySet Name="Calendars" EntityType="AirTicketModel.Calendar" />
           <EntitySet Name="Countries" EntityType="AirTicketModel.Country" />
           <EntitySet Name="Prices" EntityType="AirTicketModel.Price" />
           <EntitySet Name="Froms" EntityType="AirTicketModel.From" />
           <EntitySet Name="Toes" EntityType="AirTicketModel.To" />
+          <EntitySet Name="Calendars" EntityType="AirTicketModel.Calendar" />
         </EntityContainer>
         <EntityType Name="Airline">
           <Key>
@@ -107,15 +106,6 @@
           <Property Name="country" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="country_code" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="country_id" Type="Int32" />
-          <Property Name="status" Type="Byte" />
-        </EntityType>
-        <EntityType Name="Calendar">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="month" Type="Int16" />
-          <Property Name="day" Type="Int16" />
           <Property Name="status" Type="Byte" />
         </EntityType>
         <EntityType Name="Country">
@@ -149,9 +139,17 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="from_id" Type="Int32" Nullable="false" />
+          <Property Name="from_id" Type="Int32" />
           <Property Name="airport_id" Type="Int32" />
           <Property Name="airline_id" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="status" Type="Byte" />
+          <Property Name="date" Type="DateTime" Precision="0" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -176,16 +174,6 @@
                 <ScalarProperty Name="country" ColumnName="country" />
                 <ScalarProperty Name="code" ColumnName="code" />
                 <ScalarProperty Name="name" ColumnName="name" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Calendars">
-            <EntityTypeMapping TypeName="AirTicketModel.Calendar">
-              <MappingFragment StoreEntitySet="Calendar">
-                <ScalarProperty Name="status" ColumnName="status" />
-                <ScalarProperty Name="day" ColumnName="day" />
-                <ScalarProperty Name="month" ColumnName="month" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -225,6 +213,15 @@
                 <ScalarProperty Name="airline_id" ColumnName="airline_id" />
                 <ScalarProperty Name="airport_id" ColumnName="airport_id" />
                 <ScalarProperty Name="from_id" ColumnName="from_id" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calendars">
+            <EntityTypeMapping TypeName="AirTicketModel.Calendar">
+              <MappingFragment StoreEntitySet="Calendar">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>

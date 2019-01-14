@@ -15,8 +15,7 @@ namespace AirTicket
     public partial class Calendar
     {
         public long id { get; set; }
-        public Nullable<short> month { get; set; }
-        public Nullable<short> day { get; set; }
         public Nullable<byte> status { get; set; }
+        public Nullable<System.DateTime> date { get; set; }
     }
 }

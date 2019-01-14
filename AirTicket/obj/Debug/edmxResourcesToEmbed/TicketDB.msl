@@ -22,16 +22,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="Calendars">
-      <EntityTypeMapping TypeName="AirTicketModel.Calendar">
-        <MappingFragment StoreEntitySet="Calendar">
-          <ScalarProperty Name="status" ColumnName="status" />
-          <ScalarProperty Name="day" ColumnName="day" />
-          <ScalarProperty Name="month" ColumnName="month" />
-          <ScalarProperty Name="id" ColumnName="id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="Countries">
       <EntityTypeMapping TypeName="AirTicketModel.Country">
         <MappingFragment StoreEntitySet="Country">
@@ -67,6 +57,15 @@
           <ScalarProperty Name="airline_id" ColumnName="airline_id" />
           <ScalarProperty Name="airport_id" ColumnName="airport_id" />
           <ScalarProperty Name="from_id" ColumnName="from_id" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Calendars">
+      <EntityTypeMapping TypeName="AirTicketModel.Calendar">
+        <MappingFragment StoreEntitySet="Calendar">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="status" ColumnName="status" />
           <ScalarProperty Name="id" ColumnName="id" />
         </MappingFragment>
       </EntityTypeMapping>

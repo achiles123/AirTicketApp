@@ -101,5 +101,32 @@ namespace AirTicket
                 }
             }
         }
+
+        private void tsCalendar_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Tạo lịch ?", "", MessageBoxButtons.OKCancel);
+            if (confirm == DialogResult.OK)
+            {
+                DateTime date = DateTime.Now.Date;
+                int year = date.Year;
+                DateTime endDate = new DateTime(year, 12, 31);
+                using (var db = new AirTicketEntities())
+                {
+                    while (date <= endDate)
+                    {
+                        Calendar calendar = db.Calendars.Where(x => x.date == date).FirstOrDefault();
+                        if (calendar == null)
+                        {
+                            calendar = new Calendar();
+                            calendar.date = date;
+                            db.Calendars.Add(calendar);
+                            db.SaveChanges();
+                        }
+                        date = date.AddDays(1);
+                    }
+                }
+            }
+             
+        }
     }
 }

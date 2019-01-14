@@ -24,9 +24,8 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="month" Type="smallint" />
-    <Property Name="day" Type="smallint" />
     <Property Name="status" Type="tinyint" />
+    <Property Name="date" Type="date" />
   </EntityType>
   <EntityType Name="Country">
     <Key>
@@ -59,7 +58,7 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="from_id" Type="int" Nullable="false" />
+    <Property Name="from_id" Type="int" />
     <Property Name="airport_id" Type="int" />
     <Property Name="airline_id" Type="int" />
   </EntityType>
