@@ -138,7 +138,7 @@ namespace AirTicket
                                                         to = new To();
                                                         to.airline_id = 1;
                                                         to.from_id = from.id;
-                                                        to.airport_id = airPortFrom.id;
+                                                        to.airport_id = airPortTo.id;
                                                         db.Toes.Add(to);
                                                         db.SaveChanges();
                                                     }

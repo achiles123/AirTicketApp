@@ -83,6 +83,10 @@
       <DependentUpon>TicketDB.tt</DependentUpon>
     </Compile>
     <Compile Include="Helper.cs" />
+    <Compile Include="JetStar\Airport.cs" />
+    <Compile Include="JetStar\AirportList.cs" />
+    <Compile Include="JetStar\Info.cs" />
+    <Compile Include="JetStar\JetStarProcess.cs" />
     <Compile Include="Price.cs">
       <DependentUpon>TicketDB.tt</DependentUpon>
     </Compile>

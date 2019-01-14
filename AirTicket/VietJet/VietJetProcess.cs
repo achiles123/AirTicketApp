@@ -90,7 +90,7 @@ namespace AirTicket.VietJet
                     if (from == null)
                     {
                         from = new From();
-                        from.airline_id = 1;
+                        from.airline_id = 2;
                         from.airport_id = airPortFrom.id;
                         db.Froms.Add(from);
                         db.SaveChanges();
@@ -127,9 +127,9 @@ namespace AirTicket.VietJet
                                 if (to == null)
                                 {
                                     to = new To();
-                                    to.airline_id = 1;
+                                    to.airline_id = 2;
                                     to.from_id = from.id;
-                                    to.airport_id = airPortFrom.id;
+                                    to.airport_id = airPortTo.id;
                                     db.Toes.Add(to);
                                     db.SaveChanges();
                                 }

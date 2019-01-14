@@ -1,4 +1,5 @@
-﻿using AirTicket.VietJet;
+﻿using AirTicket.JetStar;
+using AirTicket.VietJet;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -17,6 +18,7 @@ namespace AirTicket
         public Form1()
         {
             InitializeComponent();
+            //Helper.Check();
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,9 +30,16 @@ namespace AirTicket
 
         private void btnVietJet_Click(object sender, EventArgs e)
         {
-            Thread JetStarThread = new Thread(new ThreadStart(VietJetProcess.process));
-            JetStarThread.IsBackground = true;
-            JetStarThread.Start();
+            Thread vietJetThread = new Thread(new ThreadStart(VietJetProcess.process));
+            vietJetThread.IsBackground = true;
+            vietJetThread.Start();
+        }
+
+        private void btnJetStar_Click(object sender, EventArgs e)
+        {
+            Thread jetStarThread = new Thread(new ThreadStart(JetStarProcess.process));
+            jetStarThread.IsBackground = true;
+            jetStarThread.Start();
         }
 
         private void tsNewCountry_Click(object sender, EventArgs e)
@@ -64,6 +73,33 @@ namespace AirTicket
             }
             
             
+        }
+
+        private void tsFixCountry_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm = MessageBox.Show("Sửa lỗi quốc gia ?", "", MessageBoxButtons.OKCancel);
+            if (confirm == DialogResult.OK)
+            {
+                using (AirTicketEntities db = new AirTicketEntities())
+                {
+                    List<Airport> errorItems = db.Airports.Where(x => x.country_id == -1).ToList();
+                    if(errorItems != null && errorItems.Count != 0)
+                    {
+                        foreach(Airport item in errorItems)
+                        {
+                            Country country = Helper.CountryMap(item.code);
+                            if (country == null)
+                                continue;
+                            item.country = country.name;
+                            item.country_code = country.code;
+                            item.country_id = country.id;
+                            db.Entry(item).State = System.Data.Entity.EntityState.Modified;
+                            db.SaveChanges();
+                        }
+                    }
+                    
+                }
+            }
         }
     }
 }
