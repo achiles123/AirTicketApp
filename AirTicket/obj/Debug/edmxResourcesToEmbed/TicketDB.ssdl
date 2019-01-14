@@ -1,11 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="AirTicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-  <EntityType Name="AirLine">
+  <EntityType Name="Airline">
     <Key>
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="255" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Airport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="code" Type="nvarchar" MaxLength="255" />
+    <Property Name="country" Type="nvarchar" MaxLength="255" />
+    <Property Name="country_code" Type="nvarchar" MaxLength="255" />
+    <Property Name="country_id" Type="int" />
     <Property Name="status" Type="tinyint" />
   </EntityType>
   <EntityType Name="Calendar">
@@ -30,11 +41,8 @@
       <PropertyRef Name="id" />
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="255" />
-    <Property Name="code" Type="nchar" MaxLength="255" />
-    <Property Name="country" Type="nchar" MaxLength="255" />
-    <Property Name="country_code" Type="nchar" MaxLength="255" />
-    <Property Name="country_id" Type="int" />
+    <Property Name="airport_id" Type="int" />
+    <Property Name="airline_id" Type="int" />
   </EntityType>
   <EntityType Name="Price">
     <Key>
@@ -52,14 +60,12 @@
     </Key>
     <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="from_id" Type="int" Nullable="false" />
-    <Property Name="name" Type="nchar" MaxLength="255" />
-    <Property Name="code" Type="nchar" MaxLength="255" />
-    <Property Name="country" Type="nchar" MaxLength="255" />
-    <Property Name="country_code" Type="nchar" MaxLength="255" />
-    <Property Name="country_id" Type="int" />
+    <Property Name="airport_id" Type="int" />
+    <Property Name="airline_id" Type="int" />
   </EntityType>
   <EntityContainer Name="AirTicketModelStoreContainer">
-    <EntitySet Name="AirLine" EntityType="Self.AirLine" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Airline" EntityType="Self.Airline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Airport" EntityType="Self.Airport" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="From" EntityType="Self.From" Schema="dbo" store:Type="Tables" />

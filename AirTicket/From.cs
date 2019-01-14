@@ -14,20 +14,8 @@ namespace AirTicket
     
     public partial class From
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public From()
-        {
-            this.Toes = new HashSet<To>();
-        }
-    
         public int id { get; set; }
-        public string name { get; set; }
-        public string code { get; set; }
-        public string country { get; set; }
-        public string country_code { get; set; }
-        public Nullable<int> country_id { get; set; }
-    
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<To> Toes { get; set; }
+        public Nullable<int> airport_id { get; set; }
+        public Nullable<int> airline_id { get; set; }
     }
 }

@@ -21,22 +21,49 @@ namespace AirTicket
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Thread VNAirThread = new Thread(new ThreadStart(ProcessVNAirline));
+            Thread VNAirThread = new Thread(new ThreadStart(VNAirProcess.process));
             VNAirThread.IsBackground = true;
             VNAirThread.Start();
-
-            Thread VietJetThread = new Thread(new ThreadStart(ProcessVietJet));
-            VietJetThread.IsBackground = true;
-            VietJetThread.Start();
-        }
-        void ProcessVNAirline()
-        {
-            VNAirProcess.process();
         }
 
-        void ProcessVietJet()
+        private void btnVietJet_Click(object sender, EventArgs e)
         {
-            VietJetProcess.process();
+            Thread JetStarThread = new Thread(new ThreadStart(VietJetProcess.process));
+            JetStarThread.IsBackground = true;
+            JetStarThread.Start();
+        }
+
+        private void tsNewCountry_Click(object sender, EventArgs e)
+        {
+            DialogResult confirm =  MessageBox.Show("Làm mới quốc gia ?","",MessageBoxButtons.OKCancel);
+            if(confirm == DialogResult.OK)
+            {
+                using (AirTicketEntities db = new AirTicketEntities())
+                {
+                    using (var transaction = db.Database.BeginTransaction())
+                    {
+                        try
+                        {
+                            db.Database.ExecuteSqlCommand("TRUNCATE TABLE [Country]");
+                            foreach (KeyValuePair<CountryMap, List<string>> item in Helper.mapList)
+                            {
+                                Country country = new Country();
+                                country.code = item.Key.code;
+                                country.name = item.Key.name;
+                                db.Countries.Add(country);
+                                db.SaveChanges();
+                            }
+                            transaction.Commit();
+                        }
+                        catch (Exception ex)
+                        {
+                            transaction.Rollback();
+                        }
+                    }
+                }
+            }
+            
+            
         }
     }
 }
