@@ -11,7 +11,7 @@ namespace AirTicket.JetStar
 {
     class JetStarProcess
     {
-        public static void process()
+        public static void processMaster()
         {
             Info data = null;
             ServicePointManager.Expect100Continue = false;

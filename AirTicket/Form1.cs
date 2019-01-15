@@ -23,21 +23,21 @@ namespace AirTicket
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Thread VNAirThread = new Thread(new ThreadStart(VNAirProcess.process));
+            Thread VNAirThread = new Thread(new ThreadStart(VNAirProcess.processMaster));
             VNAirThread.IsBackground = true;
             VNAirThread.Start();
         }
 
         private void btnVietJet_Click(object sender, EventArgs e)
         {
-            Thread vietJetThread = new Thread(new ThreadStart(VietJetProcess.process));
+            Thread vietJetThread = new Thread(new ThreadStart(VietJetProcess.processMaster));
             vietJetThread.IsBackground = true;
             vietJetThread.Start();
         }
 
         private void btnJetStar_Click(object sender, EventArgs e)
         {
-            Thread jetStarThread = new Thread(new ThreadStart(JetStarProcess.process));
+            Thread jetStarThread = new Thread(new ThreadStart(JetStarProcess.processMaster));
             jetStarThread.IsBackground = true;
             jetStarThread.Start();
         }
@@ -127,6 +127,13 @@ namespace AirTicket
                 }
             }
              
+        }
+
+        private void btnAirlineProcess_Click(object sender, EventArgs e)
+        {
+            Thread VNAirThread = new Thread(new ThreadStart(VNAirProcess.processOneWay));
+            VNAirThread.IsBackground = true;
+            VNAirThread.Start();
         }
     }
 }

@@ -8,6 +8,8 @@
     <EntitySet Name="Froms" EntityType="AirTicketModel.From" />
     <EntitySet Name="Toes" EntityType="AirTicketModel.To" />
     <EntitySet Name="Calendars" EntityType="AirTicketModel.Calendar" />
+    <EntitySet Name="Passengers" EntityType="AirTicketModel.Passenger" />
+    <EntitySet Name="TicketTypes" EntityType="AirTicketModel.TicketType" />
   </EntityContainer>
   <EntityType Name="Airline">
     <Key>
@@ -45,6 +47,11 @@
     <Property Name="airline_id" Type="Int32" />
     <Property Name="price1" Type="Int32" />
     <Property Name="status" Type="Byte" />
+    <Property Name="tax" Type="Int32" />
+    <Property Name="total" Type="Int32" />
+    <Property Name="from_id" Type="Int32" />
+    <Property Name="to_id" Type="Int32" />
+    <Property Name="passenger_id" Type="Int32" />
   </EntityType>
   <EntityType Name="From">
     <Key>
@@ -70,5 +77,19 @@
     <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="status" Type="Byte" />
     <Property Name="date" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TicketType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
   </EntityType>
 </Schema>

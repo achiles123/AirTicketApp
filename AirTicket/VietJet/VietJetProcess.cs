@@ -11,7 +11,7 @@ namespace AirTicket.VietJet
 {
     class VietJetProcess
     {
-        public static void process()
+        public static void processMaster()
         {
             VietJetAirport data = null;
             ServicePointManager.Expect100Continue = false;

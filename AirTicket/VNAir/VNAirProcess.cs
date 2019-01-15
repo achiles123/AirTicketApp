@@ -12,7 +12,7 @@ namespace AirTicket
 {
     class VNAirProcess
     {
-        public static void process()
+        public static void processMaster()
         {
             List<AirportsData> data = null;
             ServicePointManager.Expect100Continue = false;
@@ -157,6 +157,95 @@ namespace AirTicket
                 
             }
                 
+        }
+
+        public static void processOneWay()
+        {
+            ServicePointManager.Expect100Continue = false;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://dc.vietnamairlines.com/v3.6/ssw/products/air/search?execution=e1s1&jipcc=VNDX");
+            request.Method = "POST";
+            request.KeepAlive = false;
+            request.Timeout = System.Threading.Timeout.Infinite;
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36";
+            request.CookieContainer = getCookie();
+            RequestSearch bodyForm = new RequestSearch();
+            bodyForm.cabinClass = "Economy";
+            bodyForm.itineraryParts = new List<ItineraryPart>();
+            bodyForm.itineraryParts.Add(new ItineraryPart() {
+                from = new ItineraryPartLocation() { code = "SGN", useNearbyLocations = false },
+                to = new ItineraryPartLocation() { code = "SGN", useNearbyLocations = false },
+                when = new ItineraryPartWhen() { date = "2019-01-16"}
+            });
+            bodyForm.passengers = new VNAir.Passenger() { ADT = 1, CHD = 1, INF = 1 };
+            bodyForm.pointOfSale = "VN";
+            bodyForm.searchType = "BRANDED";
+            byte[] data = Encoding.ASCII.GetBytes(JsonConvert.SerializeObject(bodyForm));
+            using (var stream = request.GetRequestStream())
+            {
+                stream.Write(data, 0,data.Length);
+            }
+            HttpWebResponse response = null;
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (Exception ex)
+            {
+                return;
+            }
+            if (response != null && response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream stream = response.GetResponseStream();
+                StreamReader reader = null;
+                if (response.CharacterSet == null || response.CharacterSet == "")
+                {
+                    reader = new StreamReader(stream);
+                }
+                else
+                {
+                    reader = new StreamReader(stream, Encoding.GetEncoding(response.CharacterSet));
+                }
+                try
+                {
+                    string result = (reader.ReadToEnd());
+
+                }
+                catch (Exception ex)
+                {
+
+                }
+                reader.Close();
+                stream.Close();
+            }
+            response.Close();
+        }
+
+        static CookieContainer getCookie()
+        {
+            CookieContainer cookie = new CookieContainer();
+            ServicePointManager.Expect100Continue = false;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://www.vietnamairlines.com/vn/vi/Home");
+            request.Method = "GET";
+            request.KeepAlive = false;
+            request.Timeout = System.Threading.Timeout.Infinite;
+            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36";
+            
+            HttpWebResponse response = null;
+            try
+            {
+                response = (HttpWebResponse)request.GetResponse();
+            }
+            catch (Exception ex)
+            {
+            }
+            if (response != null && response.StatusCode == HttpStatusCode.OK)
+            {
+                cookie.Add(response.Cookies);
+            }
+            response.Close();
+            return cookie;
         }
     }
 }
