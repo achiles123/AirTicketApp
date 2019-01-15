@@ -32,5 +32,7 @@ namespace AirTicket
         public virtual DbSet<From> Froms { get; set; }
         public virtual DbSet<To> Toes { get; set; }
         public virtual DbSet<Calendar> Calendars { get; set; }
+        public virtual DbSet<Passenger> Passengers { get; set; }
+        public virtual DbSet<TicketType> TicketTypes { get; set; }
     }
 }

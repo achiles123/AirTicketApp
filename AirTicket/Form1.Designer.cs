@@ -35,18 +35,22 @@
             this.tsNewCountry = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsFixCountry = new System.Windows.Forms.ToolStripButton();
-            this.btnJetStar = new System.Windows.Forms.Button();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsCalendar = new System.Windows.Forms.ToolStripButton();
+            this.btnJetStar = new System.Windows.Forms.Button();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.toolStrip1.SuspendLayout();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnVNAir
             // 
-            this.btnVNAir.Location = new System.Drawing.Point(48, 36);
-            this.btnVNAir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVNAir.Location = new System.Drawing.Point(28, 15);
             this.btnVNAir.Name = "btnVNAir";
-            this.btnVNAir.Size = new System.Drawing.Size(144, 28);
+            this.btnVNAir.Size = new System.Drawing.Size(108, 23);
             this.btnVNAir.TabIndex = 0;
             this.btnVNAir.Text = "VietNam Airline";
             this.btnVNAir.UseVisualStyleBackColor = true;
@@ -54,10 +58,9 @@
             // 
             // btnVietJet
             // 
-            this.btnVietJet.Location = new System.Drawing.Point(48, 114);
-            this.btnVietJet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVietJet.Location = new System.Drawing.Point(28, 79);
             this.btnVietJet.Name = "btnVietJet";
-            this.btnVietJet.Size = new System.Drawing.Size(144, 28);
+            this.btnVietJet.Size = new System.Drawing.Size(108, 23);
             this.btnVietJet.TabIndex = 1;
             this.btnVietJet.Text = "VietJet";
             this.btnVietJet.UseVisualStyleBackColor = true;
@@ -74,7 +77,7 @@
             this.tsCalendar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(659, 27);
+            this.toolStrip1.Size = new System.Drawing.Size(494, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -84,14 +87,14 @@
             this.tsNewCountry.Image = ((System.Drawing.Image)(resources.GetObject("tsNewCountry.Image")));
             this.tsNewCountry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsNewCountry.Name = "tsNewCountry";
-            this.tsNewCountry.Size = new System.Drawing.Size(98, 24);
+            this.tsNewCountry.Size = new System.Drawing.Size(79, 22);
             this.tsNewCountry.Text = "Data country";
             this.tsNewCountry.Click += new System.EventHandler(this.tsNewCountry_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // tsFixCountry
             // 
@@ -99,25 +102,14 @@
             this.tsFixCountry.Image = ((System.Drawing.Image)(resources.GetObject("tsFixCountry.Image")));
             this.tsFixCountry.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsFixCountry.Name = "tsFixCountry";
-            this.tsFixCountry.Size = new System.Drawing.Size(84, 24);
+            this.tsFixCountry.Size = new System.Drawing.Size(69, 22);
             this.tsFixCountry.Text = "Fix country";
             this.tsFixCountry.Click += new System.EventHandler(this.tsFixCountry_Click);
-            // 
-            // btnJetStar
-            // 
-            this.btnJetStar.Location = new System.Drawing.Point(48, 190);
-            this.btnJetStar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnJetStar.Name = "btnJetStar";
-            this.btnJetStar.Size = new System.Drawing.Size(144, 28);
-            this.btnJetStar.TabIndex = 3;
-            this.btnJetStar.Text = "JetStar";
-            this.btnJetStar.UseVisualStyleBackColor = true;
-            this.btnJetStar.Click += new System.EventHandler(this.btnJetStar_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 27);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // tsCalendar
             // 
@@ -125,23 +117,66 @@
             this.tsCalendar.Image = ((System.Drawing.Image)(resources.GetObject("tsCalendar.Image")));
             this.tsCalendar.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsCalendar.Name = "tsCalendar";
-            this.tsCalendar.Size = new System.Drawing.Size(65, 24);
+            this.tsCalendar.Size = new System.Drawing.Size(53, 22);
             this.tsCalendar.Text = "Tạo lịch";
             this.tsCalendar.Click += new System.EventHandler(this.tsCalendar_Click);
             // 
+            // btnJetStar
+            // 
+            this.btnJetStar.Location = new System.Drawing.Point(28, 140);
+            this.btnJetStar.Name = "btnJetStar";
+            this.btnJetStar.Size = new System.Drawing.Size(108, 23);
+            this.btnJetStar.TabIndex = 3;
+            this.btnJetStar.Text = "JetStar";
+            this.btnJetStar.UseVisualStyleBackColor = true;
+            this.btnJetStar.Click += new System.EventHandler(this.btnJetStar_Click);
+            // 
+            // tabControl1
+            // 
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabControl1.Location = new System.Drawing.Point(0, 25);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(494, 348);
+            this.tabControl1.TabIndex = 4;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.btnVietJet);
+            this.tabPage1.Controls.Add(this.btnJetStar);
+            this.tabPage1.Controls.Add(this.btnVNAir);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(486, 322);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "Master";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(486, 322);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Xử lý";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(659, 459);
-            this.Controls.Add(this.btnJetStar);
+            this.ClientSize = new System.Drawing.Size(494, 373);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.btnVietJet);
-            this.Controls.Add(this.btnVNAir);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,6 +193,9 @@
         private System.Windows.Forms.ToolStripButton tsFixCountry;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton tsCalendar;
+        private System.Windows.Forms.TabControl tabControl1;
+        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabPage2;
     }
 }
 

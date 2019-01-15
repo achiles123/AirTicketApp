@@ -12,6 +12,8 @@
         <EntityTypeShape EntityType="AirTicketModel.From" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="AirTicketModel.To" Width="1.5" PointX="2.75" PointY="5.75" />
         <EntityTypeShape EntityType="AirTicketModel.Calendar" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="AirTicketModel.Passenger" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AirTicketModel.TicketType" Width="1.5" PointX="7.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

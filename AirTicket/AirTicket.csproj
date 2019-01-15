@@ -87,6 +87,9 @@
     <Compile Include="JetStar\AirportList.cs" />
     <Compile Include="JetStar\Info.cs" />
     <Compile Include="JetStar\JetStarProcess.cs" />
+    <Compile Include="Passenger.cs">
+      <DependentUpon>TicketDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Price.cs">
       <DependentUpon>TicketDB.tt</DependentUpon>
     </Compile>
@@ -106,6 +109,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>TicketDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="TicketType.cs">
+      <DependentUpon>TicketDB.tt</DependentUpon>
     </Compile>
     <Compile Include="To.cs">
       <DependentUpon>TicketDB.tt</DependentUpon>

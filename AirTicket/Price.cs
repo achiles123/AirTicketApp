@@ -19,5 +19,10 @@ namespace AirTicket
         public Nullable<int> airline_id { get; set; }
         public Nullable<int> price1 { get; set; }
         public Nullable<byte> status { get; set; }
+        public Nullable<int> tax { get; set; }
+        public Nullable<int> total { get; set; }
+        public Nullable<int> from_id { get; set; }
+        public Nullable<int> to_id { get; set; }
+        public Nullable<int> passenger_id { get; set; }
     }
 }

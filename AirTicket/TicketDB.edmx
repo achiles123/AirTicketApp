@@ -29,8 +29,8 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="status" Type="tinyint" />
           <Property Name="date" Type="date" />
+          <Property Name="status" Type="tinyint" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
@@ -48,6 +48,13 @@
           <Property Name="airport_id" Type="int" />
           <Property Name="airline_id" Type="int" />
         </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
         <EntityType Name="Price">
           <Key>
             <PropertyRef Name="id" />
@@ -56,7 +63,19 @@
           <Property Name="calendar_id" Type="bigint" />
           <Property Name="airline_id" Type="int" />
           <Property Name="price" Type="int" />
+          <Property Name="tax" Type="int" />
+          <Property Name="total" Type="int" />
+          <Property Name="from_id" Type="int" />
+          <Property Name="to_id" Type="int" />
+          <Property Name="passenger_id" Type="int" />
           <Property Name="status" Type="tinyint" />
+        </EntityType>
+        <EntityType Name="TicketType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="To">
           <Key>
@@ -67,13 +86,21 @@
           <Property Name="airport_id" Type="int" />
           <Property Name="airline_id" Type="int" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6013: The table/view 'AirTicket.dbo.Type' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Type">
+          <Property Name="id" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
         <EntityContainer Name="AirTicketModelStoreContainer">
           <EntitySet Name="Airline" EntityType="Self.Airline" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Airport" EntityType="Self.Airport" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="From" EntityType="Self.From" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TicketType" EntityType="Self.TicketType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="To" EntityType="Self.To" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -88,6 +115,8 @@
           <EntitySet Name="Froms" EntityType="AirTicketModel.From" />
           <EntitySet Name="Toes" EntityType="AirTicketModel.To" />
           <EntitySet Name="Calendars" EntityType="AirTicketModel.Calendar" />
+          <EntitySet Name="Passengers" EntityType="AirTicketModel.Passenger" />
+          <EntitySet Name="TicketTypes" EntityType="AirTicketModel.TicketType" />
         </EntityContainer>
         <EntityType Name="Airline">
           <Key>
@@ -125,6 +154,11 @@
           <Property Name="airline_id" Type="Int32" />
           <Property Name="price1" Type="Int32" />
           <Property Name="status" Type="Byte" />
+          <Property Name="tax" Type="Int32" />
+          <Property Name="total" Type="Int32" />
+          <Property Name="from_id" Type="Int32" />
+          <Property Name="to_id" Type="Int32" />
+          <Property Name="passenger_id" Type="Int32" />
         </EntityType>
         <EntityType Name="From">
           <Key>
@@ -150,6 +184,20 @@
           <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="status" Type="Byte" />
           <Property Name="date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="Passenger">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TicketType">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -190,6 +238,11 @@
           <EntitySetMapping Name="Prices">
             <EntityTypeMapping TypeName="AirTicketModel.Price">
               <MappingFragment StoreEntitySet="Price">
+                <ScalarProperty Name="passenger_id" ColumnName="passenger_id" />
+                <ScalarProperty Name="to_id" ColumnName="to_id" />
+                <ScalarProperty Name="from_id" ColumnName="from_id" />
+                <ScalarProperty Name="total" ColumnName="total" />
+                <ScalarProperty Name="tax" ColumnName="tax" />
                 <ScalarProperty Name="status" ColumnName="status" />
                 <ScalarProperty Name="price1" ColumnName="price" />
                 <ScalarProperty Name="airline_id" ColumnName="airline_id" />
@@ -222,6 +275,22 @@
               <MappingFragment StoreEntitySet="Calendar">
                 <ScalarProperty Name="date" ColumnName="date" />
                 <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Passengers">
+            <EntityTypeMapping TypeName="AirTicketModel.Passenger">
+              <MappingFragment StoreEntitySet="Passenger">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TicketTypes">
+            <EntityTypeMapping TypeName="AirTicketModel.TicketType">
+              <MappingFragment StoreEntitySet="TicketType">
+                <ScalarProperty Name="name" ColumnName="name" />
                 <ScalarProperty Name="id" ColumnName="id" />
               </MappingFragment>
             </EntityTypeMapping>
