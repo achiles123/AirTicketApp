@@ -163,19 +163,22 @@ namespace AirTicket
         {
             ServicePointManager.Expect100Continue = false;
             ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://dc.vietnamairlines.com/v3.6/ssw/products/air/search?execution=e1s1&jipcc=VNDX");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://dc.vietnamairlines.com/v3.6/ssw/products/air/search?jipcc=VNDX");
             request.Method = "POST";
             request.KeepAlive = false;
             request.Timeout = System.Threading.Timeout.Infinite;
+            request.Accept = "application/json";
             request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36";
             request.CookieContainer = getCookie();
+            request.ContentType = "application/json";
+            request.Headers.Add("Authorization", "Bearer T1RLAQIx4m9JvMTrKWRaxoAa34R/ubvAPRAsItOfYHTONrJ3PcWx9uUgAACwyzZCflD5mk0TPPPfn032H4Y/hhwlWHxxA6FGJGIPPhFGVrywnS+obrHEs6OA9gbOTkaebs/MW8KNWq7Jvm4aiDC6M8cJhBegCHP0fKGjzGxrmEsMAkINi2q4rLo2wDWQjTTBIYnruart3SQ0XUpNli8Q9iPhp9T6j68cc3zID2u5E39jGV/OLcIqvLpX7dgA/ZE2LNlV2CIE38ITP3qYy3+LLmWXMRSC7Il+rxoot3U*");
             RequestSearch bodyForm = new RequestSearch();
             bodyForm.cabinClass = "Economy";
             bodyForm.itineraryParts = new List<ItineraryPart>();
             bodyForm.itineraryParts.Add(new ItineraryPart() {
                 from = new ItineraryPartLocation() { code = "SGN", useNearbyLocations = false },
-                to = new ItineraryPartLocation() { code = "SGN", useNearbyLocations = false },
-                when = new ItineraryPartWhen() { date = "2019-01-16"}
+                to = new ItineraryPartLocation() { code = "HAN", useNearbyLocations = false },
+                when = new ItineraryPartWhen() { date = "2019-01-30"}
             });
             bodyForm.passengers = new VNAir.Passenger() { ADT = 1, CHD = 1, INF = 1 };
             bodyForm.pointOfSale = "VN";
@@ -190,8 +193,17 @@ namespace AirTicket
             {
                 response = (HttpWebResponse)request.GetResponse();
             }
-            catch (Exception ex)
+            catch (WebException ex)
             {
+                using (WebResponse responseEx = ex.Response)
+                {
+                    HttpWebResponse httpResponse = (HttpWebResponse)response;
+                    using (Stream dataEx = responseEx.GetResponseStream())
+                    using (var reader = new StreamReader(dataEx))
+                    {
+                        string text = reader.ReadToEnd();
+                    }
+                }
                 return;
             }
             if (response != null && response.StatusCode == HttpStatusCode.OK)
@@ -224,27 +236,37 @@ namespace AirTicket
         static CookieContainer getCookie()
         {
             CookieContainer cookie = new CookieContainer();
-            ServicePointManager.Expect100Continue = false;
-            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://www.vietnamairlines.com/vn/vi/Home");
-            request.Method = "GET";
-            request.KeepAlive = false;
-            request.Timeout = System.Threading.Timeout.Infinite;
-            request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36";
-            
-            HttpWebResponse response = null;
-            try
+            cookie.Add(new Cookie()
             {
-                response = (HttpWebResponse)request.GetResponse();
-            }
-            catch (Exception ex)
-            {
-            }
-            if (response != null && response.StatusCode == HttpStatusCode.OK)
-            {
-                cookie.Add(response.Cookies);
-            }
-            response.Close();
+                Domain = "vietnamairlines.com",
+                Name = "isUseCookie",
+                Value = "vietnamairlines_usingCookie",
+                Expires = DateTime.Now.AddDays(100)
+            });
+
+            //ServicePointManager.Expect100Continue = false;
+            //ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Ssl3 | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
+            //HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://dc.vietnamairlines.com/v3.6/ssw/login?execution=e2s1&jipcc=VNDX");
+            //request.Method = "OPTIONS";
+            //request.KeepAlive = false;
+            //request.Timeout = System.Threading.Timeout.Infinite;
+            //request.UserAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36";
+            //request.ContentType = "application/json";
+            //request.Headers.Add("Authorization", "Bearer T1RLAQIx4m9JvMTrKWRaxoAa34R/ubvAPRAsItOfYHTONrJ3PcWx9uUgAACwyzZCflD5mk0TPPPfn032H4Y/hhwlWHxxA6FGJGIPPhFGVrywnS+obrHEs6OA9gbOTkaebs/MW8KNWq7Jvm4aiDC6M8cJhBegCHP0fKGjzGxrmEsMAkINi2q4rLo2wDWQjTTBIYnruart3SQ0XUpNli8Q9iPhp9T6j68cc3zID2u5E39jGV/OLcIqvLpX7dgA/ZE2LNlV2CIE38ITP3qYy3+LLmWXMRSC7Il+rxoot3U*");
+            //request.Accept = "application/json";
+            //HttpWebResponse response = null;
+            //try
+            //{
+            //    response = (HttpWebResponse)request.GetResponse();
+            //}
+            //catch (Exception ex)
+            //{
+            //}
+            //if (response != null && response.StatusCode == HttpStatusCode.OK)
+            //{
+            //    cookie.Add(response.Cookies);
+            //}
+            //response.Close();
             return cookie;
         }
     }

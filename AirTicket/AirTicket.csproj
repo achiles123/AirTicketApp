@@ -127,6 +127,7 @@
     <Compile Include="VNAir\AirportsData.cs" />
     <Compile Include="VNAir\Destination.cs" />
     <Compile Include="VNAir\RequestSearch.cs" />
+    <Compile Include="VNAir\ResponseVNAir.cs" />
     <Compile Include="VNAir\VNAirProcess.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
