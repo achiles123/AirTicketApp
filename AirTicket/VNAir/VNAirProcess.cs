@@ -7,11 +7,17 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace AirTicket
 {
     class VNAirProcess
     {
+        static Form parentForm;
+        public static void setForm(Form frm)
+        {
+            parentForm = frm;
+        }
         public static void processMaster()
         {
             List<AirportsData> data = null;
@@ -189,6 +195,8 @@ namespace AirTicket
                 stream.Write(data, 0,data.Length);
             }
             HttpWebResponse response = null;
+
+            Label warning = (Label)parentForm.Controls.Find("lbVNAirWarning", true)[0];
             try
             {
                 response = (HttpWebResponse)request.GetResponse();
@@ -204,8 +212,17 @@ namespace AirTicket
                         string text = reader.ReadToEnd();
                     }
                 }
+                warning.Invoke((MethodInvoker)delegate
+                {
+                    warning.Text = "!";
+                    warning.ForeColor = System.Drawing.Color.Red;
+                });
                 return;
             }
+            warning.Invoke((MethodInvoker)delegate
+            {
+                warning.Text = "";
+            });
             if (response != null && response.StatusCode == HttpStatusCode.OK)
             {
                 Stream stream = response.GetResponseStream();

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.btnVNAir = new System.Windows.Forms.Button();
             this.btnVietJet = new System.Windows.Forms.Button();
@@ -42,6 +43,8 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnAirlineProcess = new System.Windows.Forms.Button();
+            this.lbVNAirWarning = new System.Windows.Forms.Label();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.toolStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
@@ -51,7 +54,7 @@
             // btnVNAir
             // 
             this.btnVNAir.Location = new System.Drawing.Point(37, 18);
-            this.btnVNAir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVNAir.Margin = new System.Windows.Forms.Padding(4);
             this.btnVNAir.Name = "btnVNAir";
             this.btnVNAir.Size = new System.Drawing.Size(144, 28);
             this.btnVNAir.TabIndex = 0;
@@ -62,7 +65,7 @@
             // btnVietJet
             // 
             this.btnVietJet.Location = new System.Drawing.Point(37, 97);
-            this.btnVietJet.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnVietJet.Margin = new System.Windows.Forms.Padding(4);
             this.btnVietJet.Name = "btnVietJet";
             this.btnVietJet.Size = new System.Drawing.Size(144, 28);
             this.btnVietJet.TabIndex = 1;
@@ -128,7 +131,7 @@
             // btnJetStar
             // 
             this.btnJetStar.Location = new System.Drawing.Point(37, 172);
-            this.btnJetStar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnJetStar.Margin = new System.Windows.Forms.Padding(4);
             this.btnJetStar.Name = "btnJetStar";
             this.btnJetStar.Size = new System.Drawing.Size(144, 28);
             this.btnJetStar.TabIndex = 3;
@@ -142,7 +145,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 27);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(659, 432);
@@ -154,9 +157,9 @@
             this.tabPage1.Controls.Add(this.btnJetStar);
             this.tabPage1.Controls.Add(this.btnVNAir);
             this.tabPage1.Location = new System.Drawing.Point(4, 25);
-            this.tabPage1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage1.Size = new System.Drawing.Size(651, 403);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Master";
@@ -164,11 +167,12 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lbVNAirWarning);
             this.tabPage2.Controls.Add(this.btnAirlineProcess);
             this.tabPage2.Location = new System.Drawing.Point(4, 25);
-            this.tabPage2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Margin = new System.Windows.Forms.Padding(4);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(4);
             this.tabPage2.Size = new System.Drawing.Size(651, 403);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Xử lý";
@@ -184,6 +188,15 @@
             this.btnAirlineProcess.UseVisualStyleBackColor = true;
             this.btnAirlineProcess.Click += new System.EventHandler(this.btnAirlineProcess_Click);
             // 
+            // lbVNAirWarning
+            // 
+            this.lbVNAirWarning.AutoSize = true;
+            this.lbVNAirWarning.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbVNAirWarning.Location = new System.Drawing.Point(169, 45);
+            this.lbVNAirWarning.Name = "lbVNAirWarning";
+            this.lbVNAirWarning.Size = new System.Drawing.Size(0, 29);
+            this.lbVNAirWarning.TabIndex = 5;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -191,13 +204,14 @@
             this.ClientSize = new System.Drawing.Size(659, 459);
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.toolStrip1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -218,6 +232,8 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Button btnAirlineProcess;
+        private System.Windows.Forms.Label lbVNAirWarning;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }
 

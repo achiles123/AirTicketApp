@@ -1,5 +1,6 @@
 ﻿using AirTicket.JetStar;
 using AirTicket.VietJet;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,6 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.Script.Serialization;
 using System.Windows.Forms;
 
 namespace AirTicket
@@ -18,7 +20,7 @@ namespace AirTicket
         public Form1()
         {
             InitializeComponent();
-            //Helper.Check();
+            VNAirProcess.setForm(this);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -135,5 +137,8 @@ namespace AirTicket
             VNAirThread.IsBackground = true;
             VNAirThread.Start();
         }
+        
+
+
     }
 }
