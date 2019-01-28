@@ -1,5 +1,7 @@
 ﻿using AirTicket.JetStar;
 using AirTicket.VietJet;
+using Fiddler;
+using Gecko;
 using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
@@ -21,6 +23,17 @@ namespace AirTicket
         {
             InitializeComponent();
             VNAirProcess.setForm(this);
+            string runnerPath = @"..\xulrunner";
+            Xpcom.Initialize(runnerPath);
+            Gecko.CertOverrideService.GetService().ValidityOverride += geckoWebBrowser1_ValidityOverride;
+
+        }
+
+        private void geckoWebBrowser1_ValidityOverride(object sender, Gecko.Events.CertOverrideEventArgs e)
+        {
+            e.OverrideResult = Gecko.CertOverride.Mismatch | Gecko.CertOverride.Time | Gecko.CertOverride.Untrusted;
+            e.Temporary = true;
+            e.Handled = true;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -133,12 +146,51 @@ namespace AirTicket
 
         private void btnAirlineProcess_Click(object sender, EventArgs e)
         {
-            Thread VNAirThread = new Thread(new ThreadStart(VNAirProcess.processOneWay));
-            VNAirThread.IsBackground = true;
-            VNAirThread.Start();
+            //Thread VNAirThread = new Thread(new ThreadStart(VNAirProcess.processOneWay));
+            //VNAirThread.IsBackground = true;
+            //VNAirThread.Start();
+            //VNAirProcess.RunningAuthentification();
+            geckoWebBrowser1.Navigate("https://fly.vietnamairlines.com/dx/VNDX/#/flight-selection?journeyType=one-way&activeMonth=01-30-2019&pointOfSale=VN&locale=en-US&origin=SGN&destination=HAN&class=Economy&ADT=1&CHD=0&INF=0&date=01-30-2019&execution=e1s1");
         }
-        
 
+        private void installToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!CertMaker.rootCertExists())
+            {
+                if (!CertMaker.createRootCert())
+                    return ;
 
+                if (!CertMaker.trustRootCert())
+                    return ;
+            }
+        }
+
+        private void uninstallToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (CertMaker.rootCertExists())
+            {
+                if (!CertMaker.removeFiddlerGeneratedCerts(true))
+                    return ;
+            }
+        }
+
+        private void startToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            FiddlerApplication.AfterSessionComplete += FidderProcess.FiddlerApplication_AfterSessionComplete;
+            FiddlerApplication.Startup(8888, true, true, true);
+        }
+
+        private void stopToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FiddlerApplication.AfterSessionComplete -= FidderProcess.FiddlerApplication_AfterSessionComplete;
+            if (FiddlerApplication.IsStarted())
+                FiddlerApplication.Shutdown();
+        }
+
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            stopToolStripMenuItem.PerformClick();
+        }
     }
 }

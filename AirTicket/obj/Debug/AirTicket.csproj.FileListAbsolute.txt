@@ -43,3 +43,10 @@ D:\project\AirtTicketApp\AirTicket\bin\Debug\EntityFramework.SqlServer.xml
 D:\project\AirtTicketApp\AirTicket\bin\Debug\Newtonsoft.Json.pdb
 D:\project\AirtTicketApp\AirTicket\bin\Debug\Newtonsoft.Json.xml
 D:\AirtTicketApp\AirTicket\obj\Debug\AirTicket.csprojResolveAssemblyReference.cache
+D:\AirtTicketApp\AirTicket\bin\Debug\BasicFormatsForCore.dll
+D:\AirtTicketApp\AirTicket\bin\Debug\BCMakeCert.dll
+D:\AirtTicketApp\AirTicket\bin\Debug\CertMaker.dll
+D:\AirtTicketApp\AirTicket\bin\Debug\FiddlerCore4.dll
+D:\AirtTicketApp\AirTicket\bin\Debug\FiddlerCore4.xml
+D:\AirtTicketApp\AirTicket\bin\Debug\Geckofx-Core.dll
+D:\AirtTicketApp\AirTicket\bin\Debug\Geckofx-Winforms.dll

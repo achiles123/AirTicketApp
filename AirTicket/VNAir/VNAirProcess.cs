@@ -216,6 +216,7 @@ namespace AirTicket
                 {
                     warning.Text = "!";
                     warning.ForeColor = System.Drawing.Color.Red;
+                    
                 });
                 return;
             }
@@ -285,6 +286,16 @@ namespace AirTicket
             //}
             //response.Close();
             return cookie;
+        }
+
+        public static void RunningAuthentification()
+        {
+            WebBrowser wb = new WebBrowser();
+            wb.ScriptErrorsSuppressed = true;
+            wb.Invoke((MethodInvoker)delegate
+            {
+                wb.Navigate("https://fly.vietnamairlines.com/dx/VNDX/#/flight-selection?journeyType=one-way&activeMonth=01-30-2019&pointOfSale=VN&locale=en-US&origin=SGN&destination=HAN&class=Economy&ADT=1&CHD=0&INF=0&date=01-30-2019&execution=e1s1");
+            });
         }
     }
 }
