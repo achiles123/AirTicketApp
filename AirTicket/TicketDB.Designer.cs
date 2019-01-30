@@ -1,10 +1,3 @@
-﻿// T4 code generation is enabled for model 'D:\AirtTicketApp\AirTicket\TicketDB.edmx'. 
-// To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
-// property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
-// is open in the designer.
-
-// If no context and entity classes have been generated, it may be because you created an empty model but
-// have not yet chosen which version of Entity Framework to use. To generate a context class and entity
-// classes for your model, open the model in the designer, right-click on the designer surface, and
-// select 'Update Model from Database...', 'Generate Database from Model...', or 'Add Code Generation
-// Item...'.
+version https://git-lfs.github.com/spec/v1
+oid sha256:db8a30165c62abd41289a564b2579da7e686e3ea54799131884e27f40a3a7d1a
+size 756

@@ -1,14 +1,3 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="AirTicketModelStoreContainer" CdmEntityContainer="Entities">
-    <EntitySetMapping Name="AirLines">
-      <EntityTypeMapping TypeName="AirTicketModel.AirLine">
-        <MappingFragment StoreEntitySet="AirLine">
-          <ScalarProperty Name="id" ColumnName="id" />
-          <ScalarProperty Name="name" ColumnName="name" />
-          <ScalarProperty Name="status" ColumnName="status" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-  </EntityContainerMapping>
-</Mapping>
+version https://git-lfs.github.com/spec/v1
+oid sha256:9e4c610a94a6c6859fb7fabfd905dc0976570b50d2bcda49348e6aa8a7d9d88f
+size 691

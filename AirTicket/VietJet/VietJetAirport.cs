@@ -1,14 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AirTicket.VietJet
-{
-    class VietJetAirport
-    {
-        public List<Airport> AirportList { get; set; }
-        public List<Pair> Pair { get; set; }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:58d6f55331fba6a3d2691888e927223b3f2db362a1589e199ea72d2928addd33
+size 303

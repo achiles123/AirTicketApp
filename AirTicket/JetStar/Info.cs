@@ -1,13 +1,3 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AirTicket.JetStar
-{
-    class Info
-    {
-        public List<AirportList> info { get; set; }
-    }
-}
+version https://git-lfs.github.com/spec/v1
+oid sha256:f38a5bd39a97558d2275e4544f20d121c618afc06e57a0aa55be6ee9d670e689
+size 244
