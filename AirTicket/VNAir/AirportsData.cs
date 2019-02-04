@@ -1,3 +1,16 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:fe4d56d90175a902969ff0f5ab6dd5453734b1cdff23d7144db79c86ff025885
-size 395
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace AirTicket.VNAir
+{
+    class AirportsData
+    {
+        public List<Airports> Airports  { get; set; }
+        public string DisplayName { get; set; }
+        public bool HideFromFlightInfo { get; set; }
+        public string Id { get; set; }
+    }
+}
