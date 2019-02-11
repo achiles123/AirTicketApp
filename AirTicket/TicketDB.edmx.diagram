@@ -1,3 +1,20 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:28284c0f168e7c8daa7cf543bdab67c99297b8ace24181080b79740188f71e63
-size 1441
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6a72c03c256e4d9c8d6425b04a1d81aa" Name="Diagram1">
+        <EntityTypeShape EntityType="AirTicketModel.Airline" Width="1.5" PointX="0.5" PointY="0.5" />
+        <EntityTypeShape EntityType="AirTicketModel.Airport" Width="1.5" PointX="2.5" PointY="0.5" />
+        <EntityTypeShape EntityType="AirTicketModel.Country" Width="1.5" PointX="0.875" PointY="2.625" />
+        <EntityTypeShape EntityType="AirTicketModel.Price" Width="1.5" PointX="4.125" PointY="2.625" />
+        <EntityTypeShape EntityType="AirTicketModel.From" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AirTicketModel.To" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="AirTicketModel.Calendar" Width="1.5" PointX="5.375" PointY="5.75" />
+        <EntityTypeShape EntityType="AirTicketModel.Passenger" Width="1.5" PointX="6.375" PointY="0.75" />
+        <EntityTypeShape EntityType="AirTicketModel.TicketType" Width="1.5" PointX="7.375" PointY="3.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

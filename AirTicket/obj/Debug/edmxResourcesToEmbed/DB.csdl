@@ -1,3 +1,14 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:a381bc5d3a2f163d206a069c0b96182d3c9128a15d0548ddf98dbb82c4f34eab
-size 815
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirTicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AirLine">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" />
+    <Property Name="name" Type="String" MaxLength="255" FixedLength="true" Unicode="true" />
+    <Property Name="status" Type="Byte" />
+  </EntityType>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AirLines" EntityType="Self.AirLine" />
+  </EntityContainer>
+</Schema>

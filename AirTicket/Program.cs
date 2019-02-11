@@ -1,3 +1,22 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:bbe607148b7760fc96e295530dccdf89bec4ba922e5a16ae0b9387c1b92f0268
-size 532
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace AirTicket
+{
+    static class Program
+    {
+        /// <summary>
+        /// The main entry point for the application.
+        /// </summary>
+        [STAThread]
+        static void Main()
+        {
+            Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);
+            Application.Run(new Form1());
+        }
+    }
+}

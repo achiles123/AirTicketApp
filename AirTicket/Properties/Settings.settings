@@ -1,3 +1,9 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:06485e25dd1b340333e55a2a981c887c72ffe7cfd8e7ec0e9c70582c41e9d853
-size 719
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="AirTicket.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="vnAirToken" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Bearer T1RLAQJBdhXbg+kLXH7xq0GZh9FyL+1RIBC1XyFzf/T0hsCblWj+WvlDAACw3ZZqYcNcxS5NWqqvXFCOm4AUP3+XAvJIErS3XxYZS+ShlxbSEYcX1nKGp2IbBbSzBSaRTpgOTymBQisUFRn4s6+ChH0xq1DFBaUzeIZOU26gkUnfin/96Dlc9MARp+L7pPZxET+O+lNRoM9Uy02YXxVVkEVs9Euc4dGaLSWMvLjnwLEkjM0lKHoSxSt7TyPeer83vuVjNgO1L1xKk1ASkmxMFVb82Hdp3nxVOdPRZbo*</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

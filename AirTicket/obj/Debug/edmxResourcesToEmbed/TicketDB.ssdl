@@ -1,3 +1,101 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:897ab1f7c7a9a80f2adb67dc43f7d2e0636aff0f8a2ff99a232fb001060f53c1
-size 4869
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AirTicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Airline">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Airport">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+    <Property Name="code" Type="nvarchar" MaxLength="255" />
+    <Property Name="country" Type="nvarchar" MaxLength="255" />
+    <Property Name="country_code" Type="nvarchar" MaxLength="255" />
+    <Property Name="country_id" Type="int" />
+    <Property Name="status" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Calendar">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="date" />
+    <Property Name="status" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nchar" MaxLength="255" />
+    <Property Name="code" Type="nchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="From">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="airport_id" Type="int" />
+    <Property Name="airline_id" Type="int" />
+  </EntityType>
+  <EntityType Name="Passenger">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="255" />
+  </EntityType>
+  <EntityType Name="Price">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="calendar_id" Type="bigint" />
+    <Property Name="airline_id" Type="int" />
+    <Property Name="price" Type="int" />
+    <Property Name="tax" Type="int" />
+    <Property Name="total" Type="int" />
+    <Property Name="from_id" Type="int" />
+    <Property Name="to_id" Type="int" />
+    <Property Name="passenger_id" Type="int" />
+    <Property Name="status" Type="tinyint" />
+  </EntityType>
+  <EntityType Name="TicketType">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="To">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="from_id" Type="int" />
+    <Property Name="airport_id" Type="int" />
+    <Property Name="airline_id" Type="int" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6013: The table/view 'AirTicket.dbo.Type' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
+        <EntityType Name="Type">
+          <Property Name="id" Type="int" />
+          <Property Name="name" Type="nvarchar" MaxLength="50" />
+        </EntityType>-->
+  <EntityContainer Name="AirTicketModelStoreContainer">
+    <EntitySet Name="Airline" EntityType="Self.Airline" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Airport" EntityType="Self.Airport" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Calendar" EntityType="Self.Calendar" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="From" EntityType="Self.From" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Passenger" EntityType="Self.Passenger" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Price" EntityType="Self.Price" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TicketType" EntityType="Self.TicketType" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="To" EntityType="Self.To" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

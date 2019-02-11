@@ -1,28 +1,3 @@
-﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
-MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTicket", "AirTicket\AirTicket.csproj", "{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}"
-EndProject
-Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Debug|x64 = Debug|x64
-		Release|Any CPU = Release|Any CPU
-		Release|x64 = Release|x64
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}.Debug|x64.ActiveCfg = Debug|x64
-		{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}.Debug|x64.Build.0 = Debug|x64
-		{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}.Release|x64.ActiveCfg = Release|x64
-		{8EC84DD3-14F4-4C56-BB7D-7FCDCCB1FE9D}.Release|x64.Build.0 = Release|x64
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-EndGlobal
+version https://git-lfs.github.com/spec/v1
+oid sha256:58ba61d1afd9903be83f96817819ffc779fde804b5ec368ac6296d48e1eb1e05
+size 1340
